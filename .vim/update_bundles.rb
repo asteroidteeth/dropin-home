@@ -7,6 +7,8 @@ git_bundles = [
   "git://github.com/majutsushi/tagbar.git",
   "git://github.com/xolox/vim-easytags.git",
   "git://github.com/Rip-Rip/clang_complete.git",
+  "git://github.com/mattn/zencoding-vim.git",
+  "git://github.com/hallettj/jslint.vim.git", # needs spidermonkey-bin
 ]
 
 vim_org_scripts = [
