@@ -1,0 +1,25 @@
+(menu-bar-right-scroll-bar)
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'package)
+(add-to-list 'package-archives
+         '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+(defvar my-packages (list 'clojure-mode 
+			  'paredit
+			  'magit
+			  'find-file-in-project))
+
+(defun elpa-install ()
+  "Install all starter-kit packages that aren't installed."
+  (interactive)
+  (dolist (package my-packages)
+    (unless (or (member package package-activated-list)
+                (functionp package))
+      (message "Installing %s" (symbol-name package))
+      (package-install package))))
+
+(elpa-install)
+(defun turn-on-paredit () (paredit-mode 1))
+(add-hook 'clojure-mode-hook 'turn-on-paredit)
+(add-hook 'clojure-mode-hook 'clojure-jack-in)
+(set-default-font "-unknown-Liberation Mono-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")
